@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+:root {
+  --red: hsl(0, 78%, 62%);
+  --cyan: hsl(180, 62%, 55%);
+  --orange: hsl(34, 97%, 64%);
+  --blue: hsl(212, 86%, 64%);
+  --very-dark-blue: hsl(234, 12%, 34%);
+  --grayish-blue: hsl(229, 6%, 66%);
+  --light-gray: hsl(0, 0%, 98%);
+  --shadow: 0 15px 30px -10px rgba(131, 166, 210, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--very-dark-blue);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 70px 20px 30px;
+}
+
+/* --- TEXTOS PRINCIPALES --- */
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.main-container > p:first-of-type {
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+  font-weight: 200;
+  line-height: 1.2;
+  color: var(--very-dark-blue);
+}
+
+.main-container > h1 {
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  color: var(--very-dark-blue);
+}
+
+.main-container > p:last-of-type {
+  max-width: 540px;
+  margin: 0 auto 64px;
+  color: var(--grayish-blue);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* --- CONTENEDOR GRID DE LAS TARJETAS --- */
+.section-container {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: repeat(2, 250px);
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- TARJETAS EN GENERAL --- */
+.section-card-1,
+.section-card-2,
+.section-card-3,
+.section-card-4 {
+  position: relative;
+  background: #ffffff;
+  height: 250px;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 32px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Franja superior de color */
+.section-card-1::before,
+.section-card-2::before,
+.section-card-3::before,
+.section-card-4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+/* Contenido interior de las tarjetas */
+.section-card-1 h1,
+.section-card-2 h1,
+.section-card-3 h1,
+.section-card-4 h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--very-dark-blue);
+}
+
+.section-card-1 p,
+.section-card-2 p,
+.section-card-3 p,
+.section-card-4 p {
+  color: var(--grayish-blue);
+  font-size: 0.83rem;
+  line-height: 1.65;
+}
+
+.section-card-1 img,
+.section-card-2 img,
+.section-card-3 img,
+.section-card-4 img {
+  width: 58px;
+  height: 58px;
+  margin-top: auto;
+  align-self: flex-end;
+}
+
+/* --- POSICIÓN Y COLOR DE CADA TARJETA --- */
+
+/* Supervisor (Columna 1, centrado abarcando 2 filas) */
+.section-card-1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.section-card-1::before {
+  background: var(--cyan);
+}
+
+/* Team Builder (Columna 2, arriba) */
+.section-card-2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+.section-card-2::before {
+  background: var(--red);
+}
+
+/* Karma (Columna 2, abajo) */
+.section-card-3 {
+  grid-column: 2;
+  grid-row: 2;
+}
+.section-card-3::before {
+  background: var(--orange);
+}
+
+/* Calculator (Columna 3, centrado abarcando 2 filas) */
+.section-card-4 {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+.section-card-4::before {
+  background: var(--blue);
+}
+
+/* --- FOOTER / ATTRIBUTION --- */
+.attribution {
+  margin-top: 50px;
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--grayish-blue);
+}
+
+.attribution a {
+  color: var(--very-dark-blue);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 1150px) {
+  .section-container {
+    grid-template-columns: repeat(2, minmax(280px, 340px));
+    grid-template-rows: auto;
+  }
+
+  .section-card-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .section-card-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .section-card-3 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .section-card-4 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 650px) {
+  .section-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .section-card-1,
+  .section-card-2,
+  .section-card-3,
+  .section-card-4 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .main-container > p:last-of-type {
+    margin-bottom: 40px;
+  }
+}
